@@ -1,0 +1,347 @@
+[
+    {
+        "ID": 1,
+        "question": "What is the capital of France?",
+        "category": "Geography",
+        "difficulty": "easy",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Paris",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "London",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Rome",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 2,
+        "question": "Which country has the largest land area?",
+        "category": "Geography",
+        "difficulty": "medium",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Canada",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Russia",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "China",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 3,
+        "question": "What is the largest planet in our solar system?",
+        "category": "Space",
+        "difficulty": "easy",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Earth",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Jupiter",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Mars",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 4,
+        "question": "Which planet has the longest day?",
+        "category": "Space",
+        "difficulty": "hard",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Venus",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Mercury",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Neptune",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 5,
+        "question": "Which language is primarily used to style web pages?",
+        "category": "Programming",
+        "difficulty": "easy",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Python",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "CSS",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "SQL",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 6,
+        "question": "What does the time complexity O(log n) describe?",
+        "category": "Programming",
+        "difficulty": "hard",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Constant growth",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Logarithmic growth",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Exponential growth",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 7,
+        "question": "Which country is home to the city of Tokyo?",
+        "category": "Geography",
+        "difficulty": "easy",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "China",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Japan",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "South Korea",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 8,
+        "question": "Which is the longest river in South America?",
+        "category": "Geography",
+        "difficulty": "hard",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Amazon River",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Nile River",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Yangtze River",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 9,
+        "question": "Which planet is known as the Red Planet?",
+        "category": "Space",
+        "difficulty": "easy",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Mars",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Venus",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Saturn",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 10,
+        "question": "Which planet has the most prominent ring system?",
+        "category": "Space",
+        "difficulty": "medium",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Saturn",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Mars",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Earth",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 11,
+        "question": "Which data structure follows the FIFO principle?",
+        "category": "Programming",
+        "difficulty": "medium",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Stack",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Queue",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Tree",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 12,
+        "question": "What keyword is used to define a function in Python?",
+        "category": "Programming",
+        "difficulty": "easy",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "func",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "def",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "function",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 13,
+        "question": "Which element has the chemical symbol O?",
+        "category": "Science",
+        "difficulty": "easy",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Oxygen",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Gold",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Osmium",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 14,
+        "question": "What is the process by which plants convert light into chemical energy?",
+        "category": "Science",
+        "difficulty": "medium",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Respiration",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Photosynthesis",
+                "is_solution": true
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Fermentation",
+                "is_solution": false
+            }
+        ]
+    },
+    {
+        "ID": 15,
+        "question": "Which particle has a negative electric charge?",
+        "category": "Science",
+        "difficulty": "hard",
+        "answers": [
+            {
+                "answer_ID": "1",
+                "answer_content": "Proton",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "2",
+                "answer_content": "Neutron",
+                "is_solution": false
+            },
+            {
+                "answer_ID": "3",
+                "answer_content": "Electron",
+                "is_solution": true
+            }
+        ]
+    }
+]
