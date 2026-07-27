@@ -113,10 +113,10 @@ def start_round():
 
     while True:
         player_set_token(first_player)
-        check_win_condition()
+        check_win_condition(first_player)
 
         player_set_token(second_player)
-        check_win_condition()
+        check_win_condition(second_player)
 
 
 def assign_tokens_and_order():
@@ -136,15 +136,22 @@ def player_set_token(player: Player):
         position: str = input(f"{player.name} select your token position: ")
         if game_data.board[position] not in ("X", "O"):
             game_data.board[position] = player.player_token
-            player.player_set_tokens.append(position)
+            player.player_set_tokens.append(int(position))
+            clear_console()
             print_board()
             break
         else:
             print("position allready set, choose a different one.")
 
 
-def check_win_condition():
-    print("checking win condition - TBD")
+def check_win_condition(player: Player):
+    player_tokens: list = player.player_set_tokens
+    for condition in game_data.win_conditions:
+        if all(item in player_tokens for item in condition):
+            clear_console()
+            print_board()
+            print(f"{player.name} wins")
+            init_game()
 
 
 def clear_console():
