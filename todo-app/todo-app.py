@@ -1,9 +1,5 @@
-# add tasks
-# view tasks
-# delete tasks
-# mark as complete and move to second list
-# create persistant save in json
 import uuid
+import json
 
 
 class Task:
@@ -19,25 +15,29 @@ class Manager:
         self.task_list = task_list
 
 
-data = [
-    {
-        "id": "1",
-        "description": "place text here.",
-        "category": "testing",
-        "is_completed": False,
-    },
-    {
-        "id": "2",
-        "description": "place more text here.",
-        "category": "more testing",
-        "is_completed": False,
-    },
-]
+def get_task_data() -> list:
+    try:
+        with open("data.json", mode="r", encoding="utf-8") as read_file:
+            data = json.load(read_file)
+        return data
+
+    except FileNotFoundError:
+        print("data.json not found.")
+
+
+def save_to_file(task_manager: Manager):
+    try:
+        with open("data.json", mode="w", encoding="utf-8") as write_file:
+            json.dump(task_manager.task_list, write_file)
+
+    except FileNotFoundError:
+        print("data.json not found.")
+
+    init_task_manager()
 
 
 def init_task_manager():
-    task_data: list = load_tasks()
-    task_manager = Manager(task_data)
+    task_manager = Manager(get_task_data())
     select_option(task_manager)
 
 
@@ -70,16 +70,16 @@ def exit_task_manager():
 
 
 def create_new_task(task_manager: Manager) -> dict:
-    id: str = str(uuid.uuid1())
+    id: str = str(uuid.uuid4())
     description: str = input("Enter task description: ")
     category: str = input("Enter category: ")
     new_task: Task = Task(id, description, category)
-    add_task(task_manager, new_task)
+    add_task_to_manager(task_manager, new_task.__dict__)
 
 
-def add_task(task_manager: Manager, new_task: Task):
-    task_manager.task_list.append(new_task.__dict__)
-    select_option(task_manager)
+def add_task_to_manager(task_manager: Manager, new_task: dict):
+    task_manager.task_list.append(new_task)
+    save_to_file(task_manager)
 
 
 def display_tasks(task_manager: Manager):
@@ -89,10 +89,6 @@ def display_tasks(task_manager: Manager):
         print(task)
 
     select_option(task_manager)
-
-
-def load_tasks():
-    return data
 
 
 def main():
