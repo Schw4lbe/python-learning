@@ -72,12 +72,12 @@ def delete_task(task_manager: Manager):
         if check_abort_operation(user_input):
             return
 
-        if int(user_input) <= 0 or int(user_input) > max_index:
+        if int(user_input) < 0 or int(user_input) > max_index:
             print("select a valid number.")
             continue
 
         else:
-            del task_manager.task_list[user_input - 1]
+            del task_manager.task_list[int(user_input)]
             save_to_file(task_manager)
             break
 
@@ -89,13 +89,13 @@ def toggle_task_done(task_manager: Manager):
         if check_abort_operation(user_input):
             return
 
-        if int(user_input) <= 0 or int(user_input) > max_index:
+        if int(user_input) < 0 or int(user_input) > max_index:
             print("select a valid number.")
             continue
 
         else:
-            task_manager.task_list[user_input - 1]["is_completed"] = (
-                not task_manager.task_list[user_input - 1]["is_completed"]
+            task_manager.task_list[int(user_input)]["is_completed"] = (
+                not task_manager.task_list[int(user_input)]["is_completed"]
             )
             save_to_file(task_manager)
             break
