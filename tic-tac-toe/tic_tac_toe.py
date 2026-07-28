@@ -1,15 +1,3 @@
-# two players alternating
-# 3 cols 3 rows
-# Xs and Os as symbols
-# print board after each move
-# check condition every move
-# endgame on win or board full
-
-
-# optional:
-# add scoring for multiple rounds
-# allow new game start without restart
-# allow different board sizes
 import sps
 from colorama import Fore, Style
 
@@ -60,6 +48,7 @@ player2 = Player("Player 2")
 
 
 def init_game():
+    reset_board()
     try:
         sps.main()
         game_data.starting_player = sps.game_data.winner
@@ -71,6 +60,10 @@ def init_game():
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
         exit()
+
+
+def reset_board():
+    game_data.__init__()
 
 
 def print_board():
@@ -134,6 +127,9 @@ def assign_tokens_and_order():
 def player_set_token(player: Player):
     while True:
         position: str = input(f"{player.name} select your token position: ")
+        if int(position) > 9 or int(position) < 1:
+            print("choose a valid number.")
+            continue
         if game_data.board[position] not in ("X", "O"):
             game_data.board[position] = player.player_token
             player.player_set_tokens.append(int(position))
