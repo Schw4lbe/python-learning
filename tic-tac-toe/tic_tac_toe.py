@@ -54,7 +54,6 @@ def init_game():
         game_data.starting_player = sps.game_data.winner
 
         if game_data.starting_player:
-            print_board()
             start_round()
 
     except KeyboardInterrupt:
@@ -64,6 +63,8 @@ def init_game():
 
 def reset_board():
     game_data.__init__()
+    player1.__init__("Player 1")
+    player2.__init__("Player 2")
 
 
 def print_board():
@@ -87,6 +88,10 @@ def print_board():
     )
     print(game_data.LINE_SEPARATOR)
 
+    if game_data.starting_player != 0:
+        print(f"{player1.name} is using {color_token(player1.player_token)}.")
+        print(f"{player2.name} is using {color_token(player2.player_token)}.\n")
+
 
 # define colors by character
 def color_token(token: str) -> str:
@@ -100,6 +105,7 @@ def color_token(token: str) -> str:
 
 def start_round():
     assign_tokens_and_order()
+    print_board()
 
     first_player = player1 if player1.is_starting_player else player2
     second_player = player2 if player1.is_starting_player else player1
@@ -130,7 +136,9 @@ def player_set_token(player: Player):
         if int(position) > 9 or int(position) < 1:
             print("choose a valid number.")
             continue
+
         if game_data.board[position] not in ("X", "O"):
+            game_data.turn_indicator += 1
             game_data.board[position] = player.player_token
             player.player_set_tokens.append(int(position))
             clear_console()
@@ -144,10 +152,18 @@ def check_win_condition(player: Player):
     player_tokens: list = player.player_set_tokens
     for condition in game_data.win_conditions:
         if all(item in player_tokens for item in condition):
-            clear_console()
-            print_board()
-            print(f"{player.name} wins")
-            init_game()
+            end_round(" WINS", player.name)
+            return
+
+    if game_data.turn_indicator >= 9:
+        end_round("TIE")
+
+
+def end_round(msg: str, name: str = ""):
+    clear_console()
+    print_board()
+    print(f"{name}{msg}")
+    init_game()
 
 
 def clear_console():

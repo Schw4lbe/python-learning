@@ -1,6 +1,7 @@
 import random
 import math
 from textwrap import dedent
+from getpass import getpass
 
 
 class GameData:
@@ -87,7 +88,7 @@ def get_user_select(player: str):
     print(f"{player} select: ")
     while True:
         try:
-            user_input = int(input("type 1, 2 or 3: "))
+            user_input = int(getpass("type 1, 2 or 3: "))
             if user_input >= 4 or user_input <= 0:
                 print("invalid number.")
                 continue
@@ -123,7 +124,3 @@ def get_option_counter(current):
 
 def main():
     init_game()
-
-
-if __name__ == "__main__":
-    main()
