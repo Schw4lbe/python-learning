@@ -8,6 +8,12 @@ class CurrencyExchangeData:
         self.currency_out: str
         self.fetched_data: list
 
+    def clear(self):
+        self.amount
+        self.currency_in
+        self.currency_out
+        self.fetched_data
+
     history: list = []
 
     CURRENCIES = {
@@ -44,7 +50,7 @@ def init_currency_exchange():
 
 
 def clear_currency_exchange_data():
-    exchange.__init__()
+    exchange.clear()
 
 
 def get_exchange_amount():

@@ -16,6 +16,18 @@ class GameData:
         self.win_condition: int = 0
         self.is_multiplayer: bool = False
 
+    def reset(self):
+        self.user_select = 0
+        self.user_rounds_won = 0
+        self.user2_select = 0
+        self.user2_rounds_won = 0
+        self.ai_select = 0
+        self.ai_rounds_won = 0
+        self.draw_count = 0
+        self.game_mode = 0
+        self.win_condition = 0
+        self.is_multiplayer = False
+
     # constants
     MODES: dict = {
         1: {"name": "best of 1", "max_turns": 1},
@@ -81,7 +93,7 @@ def set_game_mode():
 
 
 def reset_game_data():
-    game_data.__init__()
+    game_data.reset()
 
 
 def clear_console():

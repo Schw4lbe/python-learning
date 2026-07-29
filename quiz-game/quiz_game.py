@@ -10,6 +10,13 @@ class SessionParams:
         self.score: int = 0
         self.answered_question_ids: list = []
 
+    def reset(self):
+        self.difficulty
+        self.category
+        self.questions
+        self.score = 0
+        self.answered_question_ids = []
+
 
 session_params = SessionParams()
 
@@ -24,7 +31,7 @@ def init_new_game():
 
 
 def reset_session_params():
-    session_params.__init__()
+    session_params.reset()
 
 
 def set_session_params(data: list):

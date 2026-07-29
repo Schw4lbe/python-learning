@@ -9,6 +9,12 @@ class Player:
         self.player_set_tokens: list = []
         self.is_starting_player: bool = False
 
+    def reset(self, name: str):
+        self.name = name
+        self.player_token = ""
+        self.player_set_tokens = []
+        self.is_starting_player = False
+
 
 class GameData:
     def __init__(self):
@@ -39,7 +45,22 @@ class GameData:
             "9": 9,
         }
 
-    LINE_SEPARATOR: str = "---+---+---"
+    def reset(self):
+        self.starting_player = 0
+        self.turn_indicator = 0
+        self.board = {
+            "1": 1,
+            "2": 2,
+            "3": 3,
+            "4": 4,
+            "5": 5,
+            "6": 6,
+            "7": 7,
+            "8": 8,
+            "9": 9,
+        }
+
+    _line_separator: str = "---+---+---"
 
 
 game_data = GameData()
@@ -62,31 +83,31 @@ def init_game():
 
 
 def reset_board():
-    game_data.__init__()
-    player1.__init__("Player 1")
-    player2.__init__("Player 2")
+    game_data.reset()
+    player1.reset("Player 1")
+    player2.reset("Player 2")
 
 
 def print_board():
-    print(game_data.LINE_SEPARATOR)
+    print(game_data._line_separator)
     print(
         f" {color_token(game_data.board["7"])} | "
         f"{color_token(game_data.board["8"])} | "
         f"{color_token(game_data.board["9"])}"
     )
-    print(game_data.LINE_SEPARATOR)
+    print(game_data._line_separator)
     print(
         f" {color_token(game_data.board["4"])} | "
         f"{color_token(game_data.board["5"])} | "
         f"{color_token(game_data.board["6"])}"
     )
-    print(game_data.LINE_SEPARATOR)
+    print(game_data._line_separator)
     print(
         f" {color_token(game_data.board["1"])} | "
         f"{color_token(game_data.board["2"])} | "
         f"{color_token(game_data.board["3"])}"
     )
-    print(game_data.LINE_SEPARATOR)
+    print(game_data._line_separator)
 
     if game_data.starting_player != 0:
         print(f"{player1.name} is using {color_token(player1.player_token)}.")
@@ -148,7 +169,7 @@ def player_set_token(player: Player):
             print("position allready set, choose a different one.")
 
 
-def check_win_condition(player: Player):
+def check_win_condition(player: Player) -> None:
     player_tokens: list = player.player_set_tokens
     for condition in game_data.win_conditions:
         if all(item in player_tokens for item in condition):
