@@ -1,3 +1,7 @@
+# Optional addition:
+# add a password strength score
+# add is not in dict
+
 import msvcrt
 import re
 
@@ -37,56 +41,34 @@ def enter_validation_loop(password: Password):
 
 
 def validate_has_special_character(password: Password):
-    for char in password.character_list:
-        if re.search(password.ALLOWED_SPECIALS_REGEX, char) is not None:
-            print("allowed special char.")
-            password.has_special_character = True
-            break
+    password.has_special_character = any(
+        char in password.ALLOWED_SPECIALS for char in password.character_list
+    )
 
-        else:
-            password.has_special_character = False
+    if not password.has_special_character:
+        print("no special char")
 
 
 def validate_has_number(password: Password):
-    for char in password.character_list:
-        if char.isnumeric():
-            password.has_number = True
-            break
-
-        else:
-            password.has_number = False
-
-    else:
-        if password.has_number == False:
-            print("no number")
+    password.has_number = any(char.isnumeric() for char in password.character_list)
+    if not password.has_number:
+        print("no number")
 
 
 def validate_is_lower(password: Password):
-    for char in password.character_list:
-        if char.islower():
-            password.has_lower_case_char = True
-            break
-
-        else:
-            password.has_lower_case_char = False
-
-    else:
-        if password.has_lower_case_char == False:
-            print("no lower case char")
+    password.has_lower_case_char = any(
+        char.islower() for char in password.character_list
+    )
+    if not password.has_lower_case_char:
+        print("no lower case char")
 
 
 def validate_is_upper(password: Password):
-    for char in password.character_list:
-        if char.isupper():
-            password.has_upper_case_char = True
-            break
-
-        else:
-            password.has_upper_case_char = False
-
-    else:
-        if password.has_upper_case_char == False:
-            print("no upper case char")
+    password.has_upper_case_char = any(
+        char.isupper() for char in password.character_list
+    )
+    if not password.has_upper_case_char:
+        print("no upper case char")
 
 
 def validate_password_length(password: Password):
