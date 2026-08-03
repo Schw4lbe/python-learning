@@ -1,17 +1,12 @@
-# takes a string char by char
-# define rules use regexes if needed
-# rules: length, upper- lowercase char, number, special char
-# check for every rule and give advice
-# at least once use name mangling for practice
-
-# Optional:
-# has at least 9 different chars
-# check if not in dictionary
-
 import msvcrt
+import re
 
 
 class Password:
+    MIN_LENGTH: int = 10
+    ALLOWED_SPECIALS_REGEX = r"[!@#$%^&*()_\-+=?]"
+    ALLOWED_SPECIALS = "!@#$%^&*()_-+=?"
+
     def __init__(self):
         self.character_list: list = []
         self.has_min_length: bool = False
@@ -19,7 +14,6 @@ class Password:
         self.has_lower_case_char: bool = False
         self.has_number: bool = False
         self.has_special_character: bool = False
-        self.__MIN_LENGTH: int = 4
 
 
 def init_password_validation():
@@ -30,8 +24,6 @@ def init_password_validation():
 def enter_validation_loop(password: Password):
     while True:
         if is_password_valid(password):
-            # currently end of app when first password is met for dev control
-            # TODO: later make password be confirmed via "return"
             output_password_result(password.character_list)
             break
 
@@ -41,11 +33,18 @@ def enter_validation_loop(password: Password):
             validate_is_upper(password)
             validate_is_lower(password)
             validate_has_number(password)
+            validate_has_special_character(password)
 
-            # check special char
 
-            # in else check each condition in a function
-            # therefore state update suggestions
+def validate_has_special_character(password: Password):
+    for char in password.character_list:
+        if re.search(password.ALLOWED_SPECIALS_REGEX, char) is not None:
+            print("allowed special char.")
+            password.has_special_character = True
+            break
+
+        else:
+            password.has_special_character = False
 
 
 def validate_has_number(password: Password):
@@ -91,7 +90,7 @@ def validate_is_upper(password: Password):
 
 
 def validate_password_length(password: Password):
-    if len(password.character_list) >= password._Password__MIN_LENGTH:
+    if len(password.character_list) >= password.MIN_LENGTH:
         password.has_min_length = True
     else:
         if not password.has_min_length:
@@ -100,27 +99,44 @@ def validate_password_length(password: Password):
 
 
 def set_password_string(password: Password):
-    # TODO: check for Umlaute and give error message
     while True:
-        string: str = msvcrt.getch().decode("ASCII")
+        try:
+            string: str = msvcrt.getch().decode("ASCII")
+            if string == "\x08":  # mapping return
+                try:
+                    password.character_list.pop()
+                    print(password.character_list)
+                    break
 
-        if string == "\x08":  # mapping return
-            try:
-                password.character_list.pop()
-                print(password.character_list)
-                break
+                except IndexError:
+                    print("string list already empty.")
+                    continue
 
-            except IndexError:
-                print("string list already empty.")
+            elif string == "\r":
+                if is_password_valid(password):
+                    break
+                else:
+                    print("password is invalid")
+
+            elif string == " ":
+                print("no space allowed.")
                 continue
 
-        elif string == "\x03":
-            exit()
+            elif string == "\x03":
+                exit()
 
-        else:
-            password.character_list.append(string)
-            print(password.character_list)
-            break
+            else:
+                if not string.isalnum() and string not in password.ALLOWED_SPECIALS:
+                    print("not allowed use: !@#$%^&*()_\\-+=?")
+                    continue
+
+                else:
+                    password.character_list.append(string)
+                    print(password.character_list)
+                    break
+
+        except UnicodeDecodeError:
+            print("dont use Umlaute.")
 
 
 def output_password_result(char_list: list):
