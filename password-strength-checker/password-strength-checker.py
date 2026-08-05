@@ -3,7 +3,6 @@
 # add is not in dict
 
 import msvcrt
-import re
 
 
 class Password:
