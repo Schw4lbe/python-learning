@@ -16,10 +16,28 @@ Schritte:
    - Beispiel: "Mystic" und "mytsic" sollten als Anagramme erkannt werden.
 """
 
+string1: str = input("enter word: ")
+string2: str = input("enter word: ")
 
-def main():
-    print("Hello from group-exercise!")
+string_list1: list = []
+string_list2: list = []
 
 
-if __name__ == "__main__":
-    main()
+def is_anagram(str1: str, str2: str) -> bool:
+    global string1, string2
+    string1 = str1.replace(" ", "").lower()
+    string2 = str2.replace(" ", "").lower()
+    print(string1, string2)
+
+    string_list1 = sorted(string1)
+    string_list2 = sorted(string2)
+
+    if string_list1 == string_list2:
+        print("is anagram")
+        return True
+    else:
+        print("is not anagram")
+        return False
+
+
+is_anagram(string1, string2)
