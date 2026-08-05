@@ -18,10 +18,25 @@ Schritte:
    - Beispiel: "Mystic, citsym!" sollte als Palindrom erkannt werden.
 """
 
+import requests
+import json
 
-def main():
-    print("Hello from group-exercise!")
+input_string: str = input("enter word: ")
+string_reversed: str = input_string[::-1]
 
+response = requests.get(
+    f"https://freedictionaryapi.com/api/v1/entries/en/{input_string}"
+)
 
-if __name__ == "__main__":
-    main()
+response_reversed = requests.get(
+    f"https://freedictionaryapi.com/api/v1/entries/en/{string_reversed}"
+)
+
+data = json.loads(response.text)
+data_reversed = json.loads(response_reversed.text)
+
+has_entries: bool = len(data["entries"]) > 0
+has_entries_reversed: bool = len(data_reversed["entries"]) > 0
+
+# TODO: needs refactoring and i need some more money!
+print(has_entries == has_entries_reversed)
