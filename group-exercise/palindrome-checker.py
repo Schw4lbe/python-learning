@@ -35,8 +35,10 @@ response_reversed = requests.get(
 data = json.loads(response.text)
 data_reversed = json.loads(response_reversed.text)
 
+print(data)
+print(data_reversed)
+
 has_entries: bool = len(data["entries"]) > 0
 has_entries_reversed: bool = len(data_reversed["entries"]) > 0
 
-# TODO: needs refactoring and i need some more money!
 print(has_entries == has_entries_reversed)
