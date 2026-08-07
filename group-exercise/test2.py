@@ -2,6 +2,7 @@
 
 
 class MyList(list):
+
     # overwrite pop method with default index 0 instead of -1
     def pop(self, index=0):
         # crawls up to parent class
