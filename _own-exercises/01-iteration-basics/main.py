@@ -9,33 +9,70 @@ Generators
 https://www.w3schools.com/python/python_iterators.asp
 https://www.w3schools.com/python/python_generators.asp
 
-Mini Project: Log File Stream Processor
+PRACTICAL EXERCISE: SERVER LOG MONITOR
 
-Scenario:
-Build a small monitoring tool that processes server logs one entry at a time instead of loading everything into memory.
-
-You have the following log messages:
 logs = [
-    "INFO: Server started",
-    "WARNING: High memory usage",
+    "INFO: User logged in",
+    "WARNING: Disk space low",
+    "INFO: File uploaded",
     "ERROR: Database connection failed",
-    "INFO: User login"
+    "INFO: User logged out",
+    "ERROR: Payment service unavailable",
 ]
 
-Use iter() to convert the log collection into an iterator.
-Use next() to manually retrieve log entries from the iterator.
-Create a generator using "yield" that provides log entries one by one.
-Create a generator that filters specific events like errors or warnings.
-Create a processing function that handles any iterator or generator.
-Extend the system to count events without storing processed entries.
+1. ITERATOR
+   Use iter() to create a log iterator so the program can inspect logs one at a time.
 
-Real-world use case:
-Used in log monitoring, data pipelines, file processing, API data streams, and systems where large amounts of data need to be processed efficiently.
+2. MANUAL INSPECTION
+   Use next() when the user chooses "Next log" to display the next available log entry.
+
+3. LOG GENERATOR
+   Create a generator with yield that streams the logs one at a time when the user chooses "Show logs".
+
+4. ERROR/WARNING FILTER
+   Create a generator that receives the log generator and yields only WARNING and ERROR entries.
+
+5. EVENT COUNTER
+   Add a "Statistics" option that consumes the log stream and counts INFO, WARNING, and ERROR entries without storing the logs.
+
+The program should repeatedly show a simple menu:
+1 = Next log
+2 = Show logs
+3 = Show warnings/errors
+4 = Show statistics
+5 = Exit
+
+Goal: build one tiny interactive log monitor where every technique has a distinct job.
 """
+
+logs: list[str] = [
+    "INFO: User logged in",
+    "WARNING: Disk space low",
+    "INFO: File uploaded",
+    "ERROR: Database connection failed",
+    "INFO: User logged out",
+    "ERROR: Payment service unavailable",
+]
+
+
+def init_logs_iteration_demo():
+    pass
+
+
+def iteration_loop(iter):
+    while True:
+        try:
+            print(next(iter))
+        except:
+            break
+
+
+my_iterator = iter(logs)
+iteration_loop(my_iterator)
 
 
 def main():
-    print("Hello from 01-iteration-basics!")
+    init_logs_iteration_demo()
 
 
 if __name__ == "__main__":

@@ -12,19 +12,31 @@ https://www.w3schools.com/python/ref_func_super.asp
 Mini Project: Employee Management System
 
 Scenario:
-Build a small employee management system using object-oriented programming. The system should handle different employee types while verifying object relationships and sharing common behavior between classes.
+Build a small HR system that manages different employee roles.
 
-Create a base employee class and multiple specialized employee classes.
-Use super() to reuse and extend functionality from a parent class.
-Use issubclass() to verify class relationships before creating specific workflows.
-Use isinstance() to check employee objects and apply different logic depending on their type.
-Create a function that receives different employee objects and uses isinstance() to decide how to process each employee type.
+employees = [
+    Developer("Alice"),
+    Manager("Bob"),
+    Designer("Charlie")
+]
 
-optional:
-Extend the system with additional employee roles that inherit from existing classes.
+1. INHERITANCE
+   Create Employee as the base class and Developer, Manager, and Designer as specialized classes.
 
-Real-world use case:
-Used in enterprise software, permission systems, application frameworks, game development, and any system where different object types share common behavior but require specialized functionality.
+2. SUPER()
+   Use super() to reuse Employee initialization and add role-specific data.
+
+3. ISSUBCLASS()
+   Use issubclass() to verify that a role class inherits from Employee before adding it to the system.
+
+4. ISINSTANCE()
+   Create one processing function that receives any employee and handles it according to its role.
+
+5. WORKFLOW
+   Pass all employees through the same function and produce role-specific output.
+
+Goal:
+Build one simple HR workflow where inheritance provides shared behavior and isinstance() determines how each employee is handled.
 """
 
 

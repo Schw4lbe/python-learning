@@ -13,27 +13,41 @@ https://www.w3schools.com/python/ref_func_filter.asp
 https://www.w3schools.com/python/ref_func_any.asp
 https://www.w3schools.com/python/ref_func_zip.asp
 
-Mini Project: User Data Processing Pipeline
+Mini Project: Admin User Management Pipeline
 
 Scenario:
-Build a small data processing system that transforms and analyzes user data. The system should clean, combine, filter, and validate information efficiently without manually processing every item.
+You are building a small admin tool for a website.
+The tool receives user data from different sources and prepares it
+for an admin dashboard.
 
-You have the following user data:
 users = [
-("Alice", 25, True),
-("Bob", 17, False),
-("Charlie", 32, True),
-("Diana", 15, True)
+    ("Alice", 25, True),
+    ("Bob", 17, False),
+    ("Charlie", 32, True),
+    ("Diana", 15, True)
 ]
 
-Create a function that formats user information using lambda.
-Use map() to transform the user data into a different representation.
-Use filter() to select users based on conditions like age or account status.
-Use zip() to combine separate data collections like names, ages, and permissions.
-Use any() to check whether specific conditions exist in the processed data.
+1. LAMBDA
+   Create a lambda that formats one user as "Alice (25)".
 
-Real-world use case:
-Used in data processing, analytics pipelines, API response handling, database transformations, and systems where collections of data need to be transformed or filtered efficiently.
+2. MAP
+   Use map() to create the formatted user list for the admin dashboard.
+
+3. FILTER
+   Use filter() to find users who are adults AND have an active account.
+
+4. ZIP
+   Split the original data into names, ages, and account statuses,
+   then use zip() to rebuild the user records.
+
+5. ANY
+   Use any() to check whether the system contains at least one
+   active adult user.
+
+Goal:
+Build a small data pipeline that takes raw user data, reconstructs
+it when needed, transforms it for display, filters it for an admin
+operation, and checks whether a relevant user exists..
 """
 
 
