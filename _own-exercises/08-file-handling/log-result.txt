@@ -1,0 +1,6 @@
+checking for ERROR ERROR: Database connection failed
+
+checking for ERROR ERROR: User connection failed
+checking for WARNING WARNING: Disk space low
+
+Analysis completed.

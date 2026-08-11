@@ -1,0 +1,4 @@
+INFO: User logged in
+WARNING: Disk space low
+ERROR: Database connection failed
+ERROR: User connection failed
