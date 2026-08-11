@@ -5,27 +5,37 @@ sys Module
 
 https://www.w3schools.com/python/module_sys.asp
 
-Mini Project: Command Line Application Framework
+Mini Project: Python System Info CLI
 
 Scenario:
-Build a small command-line application that interacts with the Python runtime environment, handles user input arguments, and manages application behavior.
+Build a small command-line tool that reports information about the
+Python environment and accepts commands from the terminal.
 
-Use sys.argv to read command-line arguments.
-Use sys.exit() to terminate the program with different exit codes.
-Use sys.version to display Python interpreter information.
-Use sys.platform to detect the operating system environment.
-Use sys.path to inspect and modify module search locations.
-Use sys.stdin to read input streams.
-Use sys.stdout and sys.stderr to handle normal output and error messages separately.
-Use sys.getsizeof() to inspect memory usage of Python objects.
-Create a command-line tool that reacts differently based on provided arguments.
-Create error handling that returns meaningful exit codes.
+1. ARGUMENTS
+   Use sys.argv to determine which command the user requested.
 
-optional:
-Extend the application into a small CLI utility with multiple commands and custom module loading.
+2. SYSTEM INFO
+   Use sys.version and sys.platform to display Python and OS information.
 
-Real-world use case:
-Used in command-line tools, automation scripts, development utilities, system administration tools, debugging applications, and software that interacts directly with the Python runtime environment.
+3. USER INPUT
+   Use sys.stdin to read additional input when required.
+
+4. OUTPUT
+   Use sys.stdout for normal output and sys.stderr for error messages.
+
+5. MEMORY
+   Use sys.getsizeof() to display the memory size of a Python object.
+
+6. EXIT CODES
+   Use sys.exit() with different codes for successful execution and errors.
+
+7. MODULE PATH
+   Display sys.path and temporarily add a custom path to it.
+
+Goal:
+Create one small CLI application where the requested command determines
+what information is displayed and invalid commands produce an error with
+an appropriate exit code.
 """
 
 
