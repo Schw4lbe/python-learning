@@ -29,9 +29,33 @@ Use ord() to analyze character Unicode values.
 Use chr() to generate characters from Unicode values.
 """
 
+passwords: list[str] = ["Hello123", "Admin!2026", "abc", "Secure_Pass99"]
+
+
+def init_process():
+    print("check isalnum: ")
+    for item in passwords:
+        print(item, item.isalnum())
+    print("\n")
+
+    for pwd in passwords:
+        print(pwd)
+        for char in pwd:
+            print(ord(char), sep=",", end=" ")
+        print("\n")
+
+    string_int1: tuple = (72, 101, 108, 108, 111, 49, 50, 51)
+    string_int2: tuple = (97, 98, 99)
+
+    print("\n")
+    for int in string_int1:
+        print(chr(int), sep=",", end=" ")
+    for int in string_int2:
+        print(chr(int), sep=",", end=" ")
+
 
 def main():
-    print("Hello from 07-character-processing!")
+    init_process()
 
 
 if __name__ == "__main__":
