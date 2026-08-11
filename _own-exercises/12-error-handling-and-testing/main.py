@@ -29,6 +29,7 @@ Create validation tests that verify correct behavior and expected failures.
 
 optional:
 Extend the system with a logging mechanism that records errors and debugging information.
+Manifest errors regarding every error type and learn where they come from.
 
 Real-world use case:
 Used in data processing systems, APIs, automation tools, database applications, testing frameworks, and production software where predictable error handling and debugging are essential.
